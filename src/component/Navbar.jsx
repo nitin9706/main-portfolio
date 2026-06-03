@@ -1,101 +1,129 @@
-import { useGSAP } from "@gsap/react";
-import gsap, { Linear } from "gsap";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RiMenu3Line } from "react-icons/ri";
 import { ImCross } from "react-icons/im";
+import { motion } from "framer-motion";
+
+const navLinks = [
+  { name: "Home", id: "home" },
+  { name: "Skills", id: "skill" },
+  { name: "Projects", id: "project" },
+  { name: "About", id: "about" },
+];
+
 const Navbar = () => {
-  // const [menuOpened, setMenuOpened] = useState(false);
-  const DevImg = useRef();
-  useGSAP(
-    () => {
-      gsap.from("img", {
-        opacity: 0,
-        rotateX: 90,
-        duration: 1,
-        ease: Linear,
+  const [active, setActive] = useState("home");
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      navLinks.forEach((link) => {
+        const section = document.getElementById(link.id);
+
+        if (section) {
+          const top = section.offsetTop - 140;
+          const bottom = top + section.offsetHeight;
+
+          if (window.scrollY >= top && window.scrollY < bottom) {
+            setActive(link.id);
+          }
+        }
       });
-    },
-    { scope: DevImg },
-  );
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <div className=" h-20 w-[80%] flex justify-between ml-[10%] items-center fixed z-10 bg-white/40 px-20 rounded-b-4xl max-sm:bg-transparent max-sm:p-0 max-sm:w-full max-sm:m-0">
-      <div ref={DevImg}>
-        <img
-          src="https://pnggallery.com/wp-content/uploads/india-logo-01.png"
-          alt=""
-          className="h-25 max-sm:hidden"
-        />
-      </div>
-      <div className=" flex gap-5 items-center ">
-        <div className="hidden sm:flex sm:justify-evenly sm:w-100 sm:text-xl">
-          <a href="#home" className="hover:text-gray-600 active:scale-95">
-            Home
-          </a>
-          <a href="#skill" className="hover:text-gray-600 active:scale-95">
-            Skill
-          </a>
-          <a href="#project" className="hover:text-gray-600 active:scale-95">
-            Project
-          </a>
-          <a href="#about" className="hover:text-gray-600 active:scale-95">
-            About
+    <motion.div
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="nav-float pointer-events-none"
+    >
+      <div className="pointer-events-auto mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-full border border-slate-200 bg-white/95 px-5 py-3 shadow-xl shadow-slate-200/40 backdrop-blur-xl">
+        <div className="flex items-center gap-4">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-900 text-white ring-1 ring-slate-900/10">
+            NS
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-slate-900">Nitin Sharma</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
+              Web & Cloud Professional
+            </p>
+          </div>
+        </div>
+
+        <div className="hidden items-center gap-8 md:flex">
+          <nav>
+            <ul className="flex items-center gap-6">
+              {navLinks.map((link) => (
+                <li key={link.id}>
+                  <a
+                    href={`#${link.id}`}
+                    className={`text-sm font-medium transition ${
+                      active === link.id
+                        ? "text-slate-950"
+                        : "text-slate-500 hover:text-slate-900"
+                    }`}
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <a
+            href="/Nitin_Sharma_Resume.pdf"
+            download="Nitin_Sharma_Resume.pdf"
+            className="btn-primary mt-2 text-center"
+          >
+            Resume
           </a>
         </div>
-        <a
-          href=""
-          className="px-6 py-3 bg-green-400 rounded active:scale-95 font-semibold text-lg max-sm:hidden"
+
+        <button
+          className="md:hidden text-slate-900"
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-label="Toggle menu"
         >
-          Resume
-        </a>
+          {menuOpen ? <ImCross size={22} /> : <RiMenu3Line size={24} />}
+        </button>
       </div>
-      {/* <div className="absolute top-10 right-0 sm:hidden z-100">
-        {" "}
-        {menuOpened ? (
-          <ImCross
-            className="size-9 relative right-10 z-50 top-0"
-            onClick={() => setMenuOpened(!menuOpened)}
-          />
-        ) : (
-          <RiMenu3Line
-            className="size-10 relative right-10 top-0 z-50"
-            onClick={() => setMenuOpened(!menuOpened)}
-          />
-        )}
-      </div>
+
       <div
-        className={`sm:hidden ${menuOpened ? "w-[45%] absolute top-7 right-0 p-5 bg-black rounded-l-2xl z-40 h-100 " : "hidden"}`}
+        className={`absolute left-4 right-4 top-24 overflow-hidden rounded-3xl border border-slate-200 bg-white/95 px-5 py-4 shadow-xl shadow-slate-200/30 backdrop-blur-xl transition-all duration-300 md:hidden ${
+          menuOpen ? "max-h-80 flex" : "max-h-0 hidden"
+        }`}
       >
-        <div
-          className={`${menuOpened ? "flex flex-col gap-10 mt-5 text-white " : "hidden"} `}
-        >
+        <div className="flex flex-col gap-4">
+          {navLinks.map((link) => (
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              onClick={() => setMenuOpen(false)}
+              className={`text-sm transition ${
+                active === link.id
+                  ? "text-slate-900 font-semibold"
+                  : "text-slate-500 hover:text-slate-900"
+              }`}
+            >
+              {link.name}
+            </a>
+          ))}
           <a
-            href="#home"
-            className="hover:text-gray-600 active:scale-95 text-2xl"
+            href="/Nitin_Sharma_Resume.pdf"
+            download="Nitin_Sharma_Resume.pdf"
+            className="btn-primary mt-2 text-center"
           >
-            Home
-          </a>
-          <a
-            href="#skill"
-            className="hover:text-gray-600 active:scale-95 text-2xl"
-          >
-            Skill
-          </a>
-          <a
-            href="#project"
-            className="hover:text-gray-600 active:scale-95 text-2xl"
-          >
-            Project
-          </a>
-          <a
-            href="#about"
-            className="hover:text-gray-600 active:scale-95 text-2xl"
-          >
-            About
+            Download Resume
           </a>
         </div>
-      </div> */}
-    </div>
+      </div>
+    </motion.div>
   );
 };
 

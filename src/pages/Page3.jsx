@@ -1,70 +1,126 @@
 import React from "react";
+import { motion } from "framer-motion";
+
+const projects = [
+  {
+    number: "01",
+    title: "Real-Time Chat App",
+    description:
+      "Socket.io-powered chat with rooms, realtime messaging, and a clean responsive interface.",
+    image: "/src/assets/login.png",
+    github: "https://github.com/nitin9706/Chat-App",
+    tech: ["Socket.io", "Node.js", "React"],
+  },
+  {
+    number: "02",
+    title: "SDS (Frontend Only)",
+    description:
+      "Practice system design interviews interactive , Build scalable architectures with drag-and-drop.",
+    image: "/src/assets/sds.png",
+    github: "https://github.com/nitin9706/SDS.git",
+    tech: ["Node.js", "Express", "MongoDB"],
+  },
+  {
+    number: "03",
+    title: "Personal Portfolio",
+    description:
+      "A polished portfolio experience that showcases skills, projects, and a clean user flow.",
+    image: "/src/assets/portfolio.png",
+    github: "https://github.com/nitin9706/Portfolio2",
+    tech: ["React", "Tailwind", "Vite"],
+    link: "https://portfolio2.vercel.app",
+  },
+];
+
 const Page3 = () => {
   return (
-    <div
-      className="h-screen p-5 bg-linear-to-t from-violet-300 to-violet-100 max-sm:h-full"
-      id="project"
-    >
-      <h1 className="text-6xl font-bold text-center max-sm:text-3xl max-sm:text-left text-violet-500 mt-20">
-        PROJECTS :
-      </h1>
-      <hr className="mx-[20%] mt-3 border-gray-600 border max-sm:ml-0 max-sm:mr-40" />
-      <div className=" flex gap-5 justify-center items-center">
-        {/* First Line */}
-        <div className="flex items-center justify-center  overflow-auto h-[75vh] gap-15 max-sm:flex-col w-[60%] max-sm:w-full flex-wrap max-sm:h-full max-sm:my-10">
-          {/* getting the projects in*/}
+    <section id="project" className="min-h-screen bg-white px-6 py-24 sm:px-10">
+      <div className="mx-auto max-w-7xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mb-10 max-w-3xl"
+        >
+          <p className="text-sm uppercase tracking-[0.28em] text-slate-500">
+            Featured work
+          </p>
+          <h2 className="mt-3 text-5xl font-semibold text-slate-950 sm:text-6xl">
+            Projects built for clean UI and strong UX.
+          </h2>
+          <p className="mt-5 text-lg leading-8 text-slate-600">
+            Projects are presented with clarity, simple navigation, and a
+            polished visual hierarchy that makes each case easy to scan.
+          </p>
+        </motion.div>
 
-          <div class="w-64 bg-white/50 shadow-[1px_1px_15px_rgba(0,0,0,0.2)] p-9 space-y-3 relative overflow-hidden rounded-2xl h-65 hover:shadow-violet-500 duration-450">
-            <div class="w-24 h-24 bg-violet-500 rounded-full absolute -right-5 -top-7">
-              <p class="absolute bottom-6 left-7 text-white text-2xl">01</p>
-            </div>
-            <div class="fill-violet-500 w-12">
-              <svg
-                viewBox="0 0 24 24"
-                data-name="Layer 1"
-                id="Layer_1"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="m24,6.928v13.072h-11.5v3h5v1H6.5v-1h5v-3H0V4.5c0-1.379,1.122-2.5,2.5-2.5h12.98c-.253.295-.54.631-.856,1H2.5c-.827,0-1.5.673-1.5,1.5v14.5h22v-10.993l1-1.079Zm-12.749,3.094C19.058.891,19.093.855,19.11.838c1.118-1.115,2.936-1.113,4.052.002,1.114,1.117,1.114,2.936,0,4.052l-8.185,8.828c-.116,1.826-1.623,3.281-3.478,3.281h-5.59l.097-.582c.043-.257,1.086-6.16,5.244-6.396Zm2.749,3.478c0-1.379-1.122-2.5-2.5-2.5-2.834,0-4.018,3.569-4.378,5h4.378c1.378,0,2.5-1.121,2.5-2.5Zm.814-1.073l2.066-2.229c-.332-1.186-1.371-2.057-2.606-2.172-.641.749-1.261,1.475-1.817,2.125,1.117.321,1.998,1.176,2.357,2.277Zm.208-5.276c1.162.313,2.125,1.134,2.617,2.229l4.803-5.18c.737-.741.737-1.925.012-2.653-.724-.725-1.908-.727-2.637,0-.069.08-2.435,2.846-4.795,5.606Z"></path>
-              </svg>
-            </div>{" "}
-            <a
-              href="https://github.com/nitin9706/Youtube_backend-clone.git"
-              target="_blank"
+        <div className="grid gap-6 md:grid-cols-3">
+          {projects.map((project, index) => (
+            <motion.article
+              key={project.number}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="section-card p-8"
             >
-              {" "}
-              <h1 class="font-bold text-xl">Backend YouTube Clone</h1>
-            </a>
-            <p class="text-sm text-zinc-500 leading-6">
-              this project focus on mainly about the backend thing of youtube
-            </p>
-          </div>
-          {/* second */}
-          <div class="w-64 bg-white/50 shadow-[1px_1px_15px_rgba(0,0,0,0.2)] p-9 space-y-3 relative overflow-hidden rounded-2xl h-65 hover:shadow-violet-500 duration-450">
-            <div class="w-24 h-24 bg-violet-500 rounded-full absolute -right-5 -top-7">
-              <p class="absolute bottom-6 left-7 text-white text-2xl">02</p>
-            </div>
-            <div class="fill-violet-500 w-12">
-              <svg
-                viewBox="0 0 24 24"
-                data-name="Layer 1"
-                id="Layer_1"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="m24,6.928v13.072h-11.5v3h5v1H6.5v-1h5v-3H0V4.5c0-1.379,1.122-2.5,2.5-2.5h12.98c-.253.295-.54.631-.856,1H2.5c-.827,0-1.5.673-1.5,1.5v14.5h22v-10.993l1-1.079Zm-12.749,3.094C19.058.891,19.093.855,19.11.838c1.118-1.115,2.936-1.113,4.052.002,1.114,1.117,1.114,2.936,0,4.052l-8.185,8.828c-.116,1.826-1.623,3.281-3.478,3.281h-5.59l.097-.582c.043-.257,1.086-6.16,5.244-6.396Zm2.749,3.478c0-1.379-1.122-2.5-2.5-2.5-2.834,0-4.018,3.569-4.378,5h4.378c1.378,0,2.5-1.121,2.5-2.5Zm.814-1.073l2.066-2.229c-.332-1.186-1.371-2.057-2.606-2.172-.641.749-1.261,1.475-1.817,2.125,1.117.321,1.998,1.176,2.357,2.277Zm.208-5.276c1.162.313,2.125,1.134,2.617,2.229l4.803-5.18c.737-.741.737-1.925.012-2.653-.724-.725-1.908-.727-2.637,0-.069.08-2.435,2.846-4.795,5.606Z"></path>
-              </svg>
-            </div>
-            <a href="https://github.com/nitin9706/Chat-App" target="_blank">
-              <h1 class="font-bold text-xl">Chat-App</h1>
-            </a>
-            <p class="text-sm text-zinc-500 leading-6 mt-2">
-              This chat app uses socket.io for RTC Uses node ,express,mongodb
-            </p>
-          </div>
+              <div className="relative mb-6 overflow-hidden rounded-3xl border border-slate-200 bg-slate-100">
+                <img
+                  src={project.image}
+                  alt={`${project.title} screenshot`}
+                  className="h-52 w-full object-cover transition duration-500 hover:scale-105"
+                />
+              </div>
+
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-900 text-lg font-semibold text-white">
+                {project.number}
+              </div>
+
+              <h3 className="mt-6 text-2xl font-semibold text-slate-950">
+                {project.title}
+              </h3>
+
+              <p className="mt-4 text-sm leading-7 text-slate-600">
+                {project.description}
+              </p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {project.tech.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-6">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex rounded-xl border border-slate-300 px-4 py-2 text-sm font-medium text-slate-800 transition hover:border-slate-900"
+                >
+                  View GitHub
+                </a>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="ml-4 inline-flex rounded-xl border border-slate-300 px-4 py-2 text-sm font-medium transition hover:border-slate-900 bg-slate-900 text-white"
+                  >
+                    View Live
+                  </a>
+                )}
+              </div>
+            </motion.article>
+          ))}
         </div>
       </div>
-      <hr className="mx-[20%] border-gray-600 border" />
-    </div>
+    </section>
   );
 };
 

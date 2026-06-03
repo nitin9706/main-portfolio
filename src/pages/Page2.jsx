@@ -1,232 +1,102 @@
-import { useGSAP } from "@gsap/react";
-import gsap, { Linear } from "gsap";
-import { ScrollTrigger } from "gsap/all";
-import React, { useRef } from "react";
-import IMG1 from "../assets/html.png";
-import IMG2 from "../assets/css.png";
-import IMG3 from "../assets/js.png";
-import IMG4 from "../assets/react.png";
-import IMG5 from "../assets/Linux.png";
-import IMG6 from "../assets/tailwind.png";
+import React from "react";
+import { motion } from "framer-motion";
+import MongoDBIcon from "../assets/mongodb.png";
+import ExpressIcon from "../assets/express.png";
+import ReactIcon from "../assets/react.png";
+import NodeIcon from "../assets/nodejs.png";
+import RedisIcon from "../assets/redis.png";
+import DockerIcon from "../assets/docker.png";
+
+const skills = [
+  {
+    label: "MongoDB",
+    icon: MongoDBIcon,
+    description:
+      "Building scalable databases with efficient data modeling and queries.",
+  },
+  {
+    label: "Express.js",
+    icon: ExpressIcon,
+    description:
+      "Creating secure REST APIs and backend services for web applications.",
+  },
+  {
+    label: "React.js",
+    icon: ReactIcon,
+    description:
+      "Developing responsive user interfaces with reusable components.",
+  },
+  {
+    label: "Node.js",
+    icon: NodeIcon,
+    description:
+      "Building fast and scalable server-side applications using JavaScript.",
+  },
+  {
+    label: "Redis",
+    icon: RedisIcon,
+    description: "Using caching and queues to improve application performance.",
+  },
+  {
+    label: "Docker",
+    icon: DockerIcon,
+    description:
+      "Containerizing applications for consistent deployment and development.",
+  },
+];
 const Page2 = () => {
-  gsap.registerPlugin(ScrollTrigger);
-  const SurfRef = useRef();
-  const LogoRef = useRef();
-  const TRef = useRef();
-
-  useGSAP(
-    () => {
-      gsap.from("div", {
-        y: -450,
-        rotateY: 90,
-        duration: 0.5,
-        delay: 1,
-        stagger: true,
-        scrollTrigger: {
-          trigger: "div",
-          scroll: "body",
-          start: "top 50%",
-          end: "bottom 80%",
-          scrub: 3,
-        },
-      });
-    },
-    { scope: SurfRef },
-  );
-
-  useGSAP(
-    () => {
-      gsap.from("img ", {
-        opacity: 0,
-        x: -90,
-        y: -100,
-        z: 100,
-        scale: 1.1,
-        duration: 0.5,
-        stagger: 0.2,
-        scrollTrigger: {
-          trigger: "img",
-          scroll: "body",
-          start: "top 50%",
-          end: "bottom 90%",
-          scrub: 3,
-        },
-      });
-    },
-    { scope: LogoRef },
-  );
-  useGSAP(
-    () => {
-      gsap.from("h1 ", {
-        opacity: 0,
-        duration: 0.5,
-        stagger: 0.2,
-        scrollTrigger: {
-          trigger: "h1",
-          scroll: "body",
-          start: "top 50%",
-          end: "bottom 90%",
-          scrub: 3,
-        },
-      });
-    },
-    { scope: LogoRef },
-  );
-  useGSAP(
-    () => {
-      gsap.to("span", {
-        y: -20,
-        scale: 1.3,
-        duration: 0.8,
-        repeat: -1,
-        yoyo: true,
-        scrollTrigger: {
-          trigger: "span",
-          scroll: "body",
-          start: "top 50%",
-          end: "bottom 70%",
-        },
-      });
-    },
-    { scope: TRef },
-  );
-
   return (
-    <div
-      className="h-screen w-full p-4 text-white overflow-hidden max-sm:p-0 max-sm:rounded-none"
+    <section
       id="skill"
+      className="min-h-screen bg-slate-50 px-6 py-24 sm:px-10"
     >
-      <div className="h-full rounded-4xl bg-black flex  perspective-[3000px]  max-sm:rounded-none">
-        {/* Making a flat box with percpective effective */}
-
-        <div
-          ref={SurfRef}
-          className=" flex justify-center items-center max-sm:hidden"
+      <div className="mx-auto max-w-7xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mb-12 max-w-3xl space-y-4"
         >
-          <div className=" h-180 w-100 rotate-x-40 rotate-z-50 absolute top-15 right-50 shadow-[10px_10px_70px_white]/70 flex justify-center items-center flex-col gap-10 rounded-3xl">
-            <div
-              className="flex justify-between items-center flex-col w-[90%] gap-20 text-xl"
-              ref={LogoRef}
+          <p className="text-sm uppercase tracking-[0.28em] text-slate-500">
+            Technical Skills
+          </p>
+          <h2 className="text-5xl font-semibold text-slate-950 sm:text-6xl">
+            Tools and technologies I rely on
+          </h2>
+          <p className="max-w-2xl text-lg leading-8 text-slate-600">
+            I build modern frontend applications with clean structure,
+            responsive design, and efficient deployment practices. These are the
+            tools I use to deliver polished results.
+          </p>
+        </motion.div>
+
+        <div className="grid gap-6 md:grid-cols-3">
+          {skills.map((skill, index) => (
+            <motion.div
+              key={skill.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="section-card p-8 text-center"
             >
-              {" "}
-              <div className="flex  justify-between w-[70%] ">
-                <div className="flex flex-col justify-center items-center gap-2">
-                  {" "}
-                  <img src={IMG6} alt="" className="h-20 bg-center bg-cover" />
-                  <h1>Tailwind</h1>
-                </div>
-                <div className="flex flex-col justify-center items-center gap-2">
-                  {" "}
-                  <img src={IMG4} alt="" className="h-20 bg-center bg-cover" />
-                  <h1>REACT JS</h1>
-                </div>
-              </div>
-              <div className="flex  justify-between w-[70%]">
-                <div className="flex flex-col justify-center items-center gap-2">
-                  {" "}
-                  <img src={IMG1} alt="" className="h-20 bg-center bg-cover" />
-                  <h1>HTML</h1>
-                </div>
-                <div className="flex flex-col justify-center items-center gap-2">
-                  {" "}
-                  <img src={IMG2} alt="" className="h-20 bg-center bg-cover" />
-                  <h1>CSS</h1>
-                </div>
-              </div>
-              <div className="flex  justify-between w-[70%]">
-                <div className="flex flex-col justify-center items-center gap-2">
-                  {" "}
-                  <img src={IMG3} alt="" className="h-20 bg-center bg-cover" />
-                  <h1>JavaScript</h1>
-                </div>
-                <div className="flex flex-col justify-center items-center gap-2">
-                  {" "}
-                  <img src={IMG5} alt="" className="h-20 bg-center bg-cover" />
-                  <h1>Linux</h1>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="rounded-l-4xl m-10 perspective-[3000px]" ref={TRef}>
-          {" "}
-          <h1
-            className=" text-8xl z-40  -rotate-x-20 rotate-y-15 font-extrabold bg-radial from-green-300 to-green-900 bg-clip-text text-transparent outline-custom max-sm:text-3xl"
-            id="Font2"
-          >
-            <span className=" text-8xl z-40  -rotate-x-20 rotate-y-15  font-extrabold bg-radial from-green-300 to-green-900 bg-clip-text text-transparent  outline-custom max-sm:text-3xl">
-              T
-            </span>
-            echnologies :
-          </h1>
-          <h1
-            className="z-40 bg-radial from-green-300 to-green-900 bg-clip-text text-transparent -rotate-x-20 rotate-y-15 text-5xl font-medium max-sm:text-2xl"
-            id="Font2"
-          >
-            That I Work With
-          </h1>
-          <div className="sm:hidden w-70 bg-gray-100/10 h-[80%] mt-9 ml-2 rounded-xl py-5 px-10 flex flex-col gap-5">
-            <div className="flex justify-between items-center h-30">
-              {" "}
-              <div>
-                <img
-                  src="/src/assets/tailwind.png"
-                  alt=""
-                  className="h-15 bg-center bg-cover"
-                />
-                <h1>Tailwind</h1>
-              </div>
-              <div>
-                <img
-                  src="/src/assets/react.png"
-                  alt=""
-                  className="h-15 bg-center bg-cover"
-                />
-                <h1>REACT JS</h1>
-              </div>
-            </div>
-            <div className="flex justify-between items-center h-30 ">
-              {" "}
-              <div>
-                <img
-                  src="/src/assets/css.png"
-                  alt=""
-                  className="h-15 bg-center bg-cover"
-                />
-                <h1 className="ml-3">CSS</h1>
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <img
-                  src="/src/assets/html.png"
-                  alt=""
-                  className="h-15 bg-center bg-cover"
-                />
-                <h1>HTML</h1>
-              </div>
-            </div>
-            <div className="flex justify-between items-center h-30">
-              {" "}
-              <div>
-                <img
-                  src="/src/assets/Linux.png"
-                  alt=""
-                  className="h-15 bg-center bg-cover"
-                />
-                <h1>Linux</h1>
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <img
-                  src="/src/assets/js.png"
-                  alt=""
-                  className="h-15 bg-center bg-cover"
-                />
-                <h1>JavaScript</h1>
-              </div>
-            </div>
-          </div>
+              <img
+                src={skill.icon}
+                alt={skill.label}
+                className="mx-auto h-20 w-20 object-contain"
+              />
+              <h3 className="mt-6 text-xl font-semibold text-slate-950">
+                {skill.label}
+              </h3>
+              <p className="mt-3 text-sm leading-7 text-slate-600">
+                {skill.description}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

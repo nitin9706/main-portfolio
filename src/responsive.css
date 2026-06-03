@@ -1,25 +1,35 @@
-@media only screen and (max-width: 400px) {
-  .section1 {
-    height: 90vh;
-background-color: black;
+@media (max-width: 1024px) {
+  .nav-float {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
-  .navbar {
-    display: none;
+}
+
+@media (max-width: 768px) {
+  .section-card,
+  .glass-panel {
+    border-radius: 2rem;
   }
-  .section_text {
-    height: 300px;
+
+  .nav-float {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-float {
+    top: 0;
+  }
+
+  section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
     width: 100%;
-  }
-  .section_text h1 {
-    font-size: 41px;
-  }
-  .section_text h3 {
-    font-size: 15px;
-  }
-  .section_text .text2 {
-    display: none;
-  }
-  .button a {
-    padding: 10px;
+    justify-content: center;
   }
 }
