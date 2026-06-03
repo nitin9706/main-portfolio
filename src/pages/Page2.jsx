@@ -1,11 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
-import MongoDBIcon from "../assets/mongodb.png";
-import ExpressIcon from "../assets/express.png";
+import MongoDBIcon from "../assets/MongoDB.png";
+import ExpressIcon from "../assets/Express.png";
 import ReactIcon from "../assets/react.png";
-import NodeIcon from "../assets/nodejs.png";
-import RedisIcon from "../assets/redis.png";
-import DockerIcon from "../assets/docker.png";
+import NodeIcon from "../assets/Nodejs.png";
+import RedisIcon from "../assets/Redis.png";
+import DockerIcon from "../assets/Docker.png";
 
 const skills = [
   {
