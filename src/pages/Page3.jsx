@@ -1,5 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
+import LoginImage from "../assets/login.png";
+import SDSImage from "../assets/sds.png";
+import PortfolioImage from "../assets/portfolio.png";
 
 const projects = [
   {
@@ -7,7 +10,7 @@ const projects = [
     title: "Real-Time Chat App",
     description:
       "Socket.io-powered chat with rooms, realtime messaging, and a clean responsive interface.",
-    image: "/src/assets/login.png",
+    image: LoginImage,
     github: "https://github.com/nitin9706/Chat-App",
     tech: ["Socket.io", "Node.js", "React"],
   },
@@ -16,7 +19,7 @@ const projects = [
     title: "SDS (Frontend Only)",
     description:
       "Practice system design interviews interactive , Build scalable architectures with drag-and-drop.",
-    image: "/src/assets/sds.png",
+    image: SDSImage,
     github: "https://github.com/nitin9706/SDS.git",
     tech: ["Node.js", "Express", "MongoDB"],
   },
@@ -25,10 +28,10 @@ const projects = [
     title: "Personal Portfolio",
     description:
       "A polished portfolio experience that showcases skills, projects, and a clean user flow.",
-    image: "/src/assets/portfolio.png",
+    image: PortfolioImage,
     github: "https://github.com/nitin9706/Portfolio2",
     tech: ["React", "Tailwind", "Vite"],
-    link: "https://portfolio2.vercel.app",
+    link: "https://main-portfolio-deploy.vercel.app/",
   },
 ];
 
