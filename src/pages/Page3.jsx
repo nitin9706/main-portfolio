@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import LoginImage from "../assets/login.png";
-import SDSImage from "../assets/sds.png";
+import SDSImage from "../assets/SDS.png";
 import PortfolioImage from "../assets/portfolio.png";
 
 const projects = [
