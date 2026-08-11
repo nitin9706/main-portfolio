@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import LoginImage from "../assets/login.png";
 import SDSImage from "../assets/SDS.png";
-import PortfolioImage from "../assets/portfolio.png";
+import DeployifyImage from "../assets/Deployify.png";
 
 const projects = [
   {
@@ -16,22 +16,21 @@ const projects = [
   },
   {
     number: "02",
+    title: "Deployify",
+    description:
+      "Connect your Git repository, automate deployments, and monitor projects from a single intuitive dashboard.",
+    image: DeployifyImage,
+    github: "https://github.com/nitin9706/Deployify",
+    tech: ["MERN", "Redis", "Tanstack Query"],
+  },
+  {
+    number: "02",
     title: "SDS (Frontend Only)",
     description:
-      "Practice system design interviews interactive , Build scalable architectures with drag-and-drop.",
+      "Practice system design interviews interactive, Build scalable architectures with drag-and-drop.",
     image: SDSImage,
     github: "https://github.com/nitin9706/SDS.git",
     tech: ["Node.js", "Express", "MongoDB"],
-  },
-  {
-    number: "03",
-    title: "Personal Portfolio",
-    description:
-      "A polished portfolio experience that showcases skills, projects, and a clean user flow.",
-    image: PortfolioImage,
-    github: "https://github.com/nitin9706/Portfolio2",
-    tech: ["React", "Tailwind", "Vite"],
-    link: "https://main-portfolio-deploy.vercel.app/",
   },
 ];
 
